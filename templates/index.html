@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>聊天机器人</title>
+</head>
+
+<body>
+	<div>有什么要问我的吗</div>
+	<input id="question" placeholder="请输入想要说的话" />
+	<button onclick="talk()">发送</button>
+	<div id="answer"></div>
+	<div>有什么要教我的吗</div>
+	问：<input id="q" /> 答: <input id="a" />
+	<button onclick="teach()">发送</button>
+	<div id="qa"></div>
+	<script>
+		const question = document.getElementById("question")
+		const answer = document.getElementById("answer")
+
+		function talk() {
+			fetch("/ask/" + encodeURIComponent(question.value))
+				.then(res => res.text())
+				.then(a => answer.innerHTML = a)
+		}
+
+		const q = document.getElementById("q")
+		const a = document.getElementById("a")
+		const qa = document.getElementById("qa")
+
+		function teach() {
+			qa.innerHTML = "正在调教..."
+			fetch(`/teach/${encodeURIComponent(q.value)}/${encodeURIComponent(a.value)}`)
+				.then(res => res.text())
+				.then(a => qa.innerHTML = a)
+		}
+	</script>
+</body>
+
+</html>
