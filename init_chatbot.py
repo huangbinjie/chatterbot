@@ -7,7 +7,7 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 chatbot = ChatBot("chatbot")
 
 # 设置训练方法：词汇表。手工训练是 ListTrainer
-deepThought.set_trainer(ChatterBotCorpusTrainer)
+chatbot.set_trainer(ChatterBotCorpusTrainer)
 
 # https://github.com/gunthercox/chatterbot-corpus
-deepThought.train("chatterbot.corpus.chinese")
+chatbot.train("chatterbot.corpus.chinese")
