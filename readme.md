@@ -7,6 +7,12 @@
 ```sh
 pip install chatterbot
 ```
+## 初始化数据库
+
+```sh
+python init_chatbot.py
+```
+当前目录下有生成 db.sqlite3 就成功了
 
 ## 启动
 
